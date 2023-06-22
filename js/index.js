@@ -8,6 +8,9 @@ const Index = {
 
     /** @type {HTMLButtonElement} */
     btnNext: document.querySelector("#btnNext"),
+
+    /** @type {HTMLSpanElement} */
+    page: document.querySelector("#page"),
   },
 
   globals: {
@@ -47,16 +50,19 @@ const Index = {
 
   /** @param {number} page */
   async goToSlide(page = 1) {
+    page = Math.max(1, page);
+
     const res = await fetch(`/slides/${page}.html`);
-
     if (!res.ok) return;
-
     const html = await res.text();
 
-    Index.globals.page = Math.max(1, page);
     location.hash = page;
+    Index.globals.page = page;
+    Index.elements.page.innerHTML = page < 10 ? `0${page}` : page.toString();
 
     Index.elements.slide.innerHTML = html;
+
+    Slide.init();
   },
 
   previousPage() {
