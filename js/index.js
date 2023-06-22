@@ -17,13 +17,18 @@ const Index = {
 
   init() {
     Index.events();
-    Index.goToSlide(1);
+    Index.loadInitialSlide();
   },
 
   events() {
     window.addEventListener("keydown", Index.handleKeyboardEvents);
     Index.elements.btnPrevious.addEventListener("click", Index.previousPage);
     Index.elements.btnNext.addEventListener("click", Index.nextPage);
+  },
+
+  loadInitialSlide() {
+    const slide = Number(location.hash.replace("#", "") ?? 1);
+    Index.goToSlide(isNaN(slide) || slide === 0 ? 1 : slide);
   },
 
   /** @param {KeyboardEvent} event */
@@ -49,6 +54,7 @@ const Index = {
     const html = await res.text();
 
     Index.globals.page = Math.max(1, page);
+    location.hash = page;
 
     Index.elements.slide.innerHTML = html;
   },
