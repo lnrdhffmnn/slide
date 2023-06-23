@@ -16,6 +16,9 @@ const Index = {
   globals: {
     /** @type {number} */
     page: 1,
+
+    /** @type {string} */
+    storageKey: "slide-page",
   },
 
   init() {
@@ -27,10 +30,11 @@ const Index = {
     window.addEventListener("keydown", Index.handleKeyboardEvents);
     Index.elements.btnPrevious.addEventListener("click", Index.previousPage);
     Index.elements.btnNext.addEventListener("click", Index.nextPage);
+    Index.elements.page.addEventListener("click", Index.slideModal);
   },
 
   loadInitialSlide() {
-    const slide = Number(location.hash.replace("#", "") ?? 1);
+    const slide = Number(sessionStorage.getItem(Index.globals.storageKey) ?? 1);
     Index.goToSlide(isNaN(slide) || slide === 0 ? 1 : slide);
   },
 
@@ -48,6 +52,16 @@ const Index = {
     }
   },
 
+  slideModal() {
+    const promptResult = prompt("Número do slide:", "1");
+    if (promptResult === null || promptResult.length === 0) return;
+
+    const slide = Number(promptResult);
+    if (isNaN(slide)) return;
+
+    Index.goToSlide(slide);
+  },
+
   /** @param {number} page */
   async goToSlide(page = 1) {
     page = Math.max(1, page);
@@ -56,7 +70,7 @@ const Index = {
     if (!res.ok) return;
     const html = await res.text();
 
-    location.hash = page;
+    sessionStorage.setItem(Index.globals.storageKey, page.toString());
     Index.globals.page = page;
     Index.elements.page.innerHTML = page < 10 ? `0${page}` : page.toString();
 

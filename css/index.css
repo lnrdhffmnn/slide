@@ -106,6 +106,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
+  font-family: var(--font-mono);
 }
 
 #pagination button {
@@ -120,25 +121,11 @@ button {
 #pagination span {
   font-size: 0.7rem;
   line-height: 0.7rem;
+  cursor: pointer;
 }
 
 input,
 textarea,
 .output {
   font-family: var(--font-mono);
-}
-
-.title {
-  font-size: xx-large;
-  font-weight: bold;
-}
-
-.descr {
-  font-size: large;
-  font-weight: 500;
-}
-.gap {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 }
