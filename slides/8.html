@@ -3,8 +3,23 @@
     <h2>Exemplos em código</h2>
   </div>
   <div class="content">
-    <textarea name="" id="" cols="50" rows="10">Fibonacci</textarea>
-    <button id="execute">Executar</button>
+    <pre><code class="language-js">
+function fibonacci(n) {
+  const sequence = [0, 1];
+
+  for (let i = 2; i < n; i++) {
+    const nextNumber = sequence[i - 1] + sequence[i - 2];
+    sequence.push(nextNumber);
+  }
+
+  return sequence;
+}
+
+console.log(fibonacci(5));
+    </code></pre>
+    <button id="execute">
+      <img src="/img/play.svg" alt="Executar" draggable="false" />
+    </button>
     <p class="output"></p>
   </div>
 </section>
