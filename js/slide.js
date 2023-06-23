@@ -12,7 +12,9 @@ const Slide = {
 
   executeCode() {
     /** @type {string} */
-    const code = document.querySelector(".language-js").innerHTML;
+    const code =
+      /** @type {HTMLElement} */ (document.querySelector(".language-js"))
+        .dataset["code"] ?? "";
 
     /** @type {HTMLButtonElement} */
     const execute = document.querySelector("#execute");
