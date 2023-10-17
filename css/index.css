@@ -149,7 +149,7 @@ textarea,
 .language-js {
   border-radius: 0.5rem;
   background-color: #191824;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 #execute {
@@ -162,7 +162,7 @@ textarea,
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 #execute > img {
