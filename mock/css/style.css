@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+}
+
+aside {
+  background-color: lightsteelblue;
+  width: 20%;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.msgs {
+  display: flex;
+  flex-direction: column;
+}
+
+.msg {
+  background-color: lightsteelblue;
+  padding: 3rem;
+  margin: 1rem;
+  width: 55%;
+  font-family: monospace;
+}
+
+.msg:nth-child(odd) {
+  border-radius: 0 1rem 1rem 1rem;
+}
+
+.msg:nth-child(even) {
+  border-radius: 1rem 0 1rem 1rem;
+  align-self: flex-end;
+}
+
+.input {
+  display: flex;
+}
+
+.input > div {
+  padding: 2.5rem;
+  margin: 1rem;
+}
+
+.text-input {
+  background-color: lightsteelblue;
+  border-radius: 3rem;
+  flex: 1;
+}
+
+.submit {
+  background-color: lightsteelblue;
+  border-radius: 50%;
+}
