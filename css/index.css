@@ -1,6 +1,6 @@
 @font-face {
   font-family: "JetBrains Mono";
-  src: local("JetBrains Mono"), url(/fonts/JetBrainsMono.ttf);
+  src: local("JetBrains Mono"), url(fonts/JetBrainsMono.ttf);
   font-display: swap;
 }
 

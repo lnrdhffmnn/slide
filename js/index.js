@@ -66,7 +66,7 @@ const Index = {
   async goToSlide(page = 1) {
     page = Math.max(1, page);
 
-    const res = await fetch(`/slides/${page}.html`);
+    const res = await fetch(`slides/${page}.html`);
     if (!res.ok) return;
     const html = await res.text();
 
