@@ -1,6 +1,6 @@
 @font-face {
   font-family: "JetBrains Mono";
-  src: local("JetBrains Mono"), url(../fonts/JetBrainsMono.ttf);
+  src: local("JetBrains Mono"), url(../fonts/jetbrains-mono.ttf);
   font-display: swap;
 }
 
@@ -11,6 +11,9 @@
   --base-light: #fff;
   --base-dark: #191824;
 
+  --mock: #242424;
+  --background: #f6f5f4;
+
   --font-mono: "JetBrains Mono", monospace;
 
   font-size: 24px;
@@ -20,17 +23,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 body {
   font-family: var(--font-mono);
   color: var(--text-dark);
-  background-color: var(--base-light);
+  background: var(--background);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#slide {
+  width: 100%;
+  height: 100%;
+  container-name: slide;
+  container-type: inline-size;
 }
 
 section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,12 +67,12 @@ section > div {
 }
 
 section > .title {
-  background-color: var(--base-dark);
+  background: var(--base-dark);
   color: var(--base-light);
 }
 
 section > .content {
-  background-color: var(--base-light);
+  background: var(--base-light);
   color: var(--base-dark);
   box-shadow: inset 10px 0 10px -5px rgba(0, 0, 0, 0.3);
 }
@@ -80,13 +96,13 @@ li:not(:last-child) {
 }
 
 .slide-cover {
-  background-color: var(--base-dark);
+  background: var(--base-dark);
   color: var(--text-light);
   flex-direction: column;
 }
 
 .slide-cover > .content {
-  background-color: inherit;
+  background: inherit;
   color: inherit;
   box-shadow: none;
   display: grid;
@@ -103,7 +119,7 @@ li:not(:last-child) {
   font-weight: bold;
 }
 
-.slide-cover .language-js {
+.slide-cover .language {
   box-shadow: none;
 }
 
@@ -112,7 +128,7 @@ button {
 }
 
 #pagination {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   margin: 1rem;
@@ -146,14 +162,14 @@ textarea,
   font-family: var(--font-mono);
 }
 
-.language-js {
+.language {
   border-radius: 0.5rem;
-  background-color: #191824;
+  background: #191824;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 #execute {
-  background-color: var(--base-dark);
+  background: var(--base-dark);
   color: var(--base-light);
   padding: 0.3rem;
   margin: 0;
@@ -172,4 +188,59 @@ textarea,
 
 a {
   color: var(--text-dark);
+}
+
+#mock {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 1rem;
+}
+
+#mock:not(:has(.fullscreen)) {
+  overflow: hidden;
+  box-shadow: 0 0 0 20px var(--mock);
+}
+
+#mock:has(.desktop) {
+  aspect-ratio: 16/9;
+  width: auto;
+  height: 80%;
+}
+
+#mock:has(.tablet) {
+  aspect-ratio: 3/4;
+  width: auto;
+  height: 80%;
+}
+
+#mock:has(.mobile) {
+  aspect-ratio: 9/21;
+  width: auto;
+  height: 80%;
+}
+
+#mock:has(.mobile.landscape) {
+  rotate: 90deg;
+}
+
+#mock:has(.mobile.landscape) > * {
+  rotate: -90deg;
+}
+
+#mock:has(.watch) {
+  aspect-ratio: 1/1;
+  width: auto;
+  height: 30%;
+  border-radius: 50%;
+}
+
+@container slide (max-width: 1024px) {
+  section {
+    flex-direction: column;
+  }
+
+  section > .content {
+    box-shadow: inset 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  }
 }
