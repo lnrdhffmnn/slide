@@ -1,18 +1,12 @@
-<section>
+<section class="mobile">
   <div class="title">
-    <h2>Exemplos em código</h2>
+    <h2>Mobile</h2>
   </div>
   <div class="content">
-    <pre><code class="language-js" data-code="let result=[];for(let e=0;e<5;e++)result.push(`${e} é par? ${0==(1&e)?'Sim':'Não'}`);console.log(result.join('<br />'));">
-for (let i = 0; i < 5; i++) {
-  console.log(
-    `${i} é par? ${(i & 1) === 0 ? "Sim" : "Não"}`
-  );
+    <pre><code class="language language-css">
+@media screen and (min-width: 768px) {
+  ...
 }
     </code></pre>
-    <button id="execute">
-      <img src="img/play.svg" alt="Executar" draggable="false" />
-    </button>
-    <p class="output"></p>
   </div>
 </section>

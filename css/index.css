@@ -1,6 +1,6 @@
 @font-face {
   font-family: "JetBrains Mono";
-  src: local("JetBrains Mono"), url(../fonts/JetBrainsMono.ttf);
+  src: local("JetBrains Mono"), url(../fonts/jetbrains-mono.ttf);
   font-display: swap;
 }
 
@@ -11,6 +11,12 @@
   --base-light: #fff;
   --base-dark: #191824;
 
+  --mock: #242424;
+  --background: #f6f5f4;
+
+  --device-radius: 1rem;
+  --device-border: 30px;
+
   --font-mono: "JetBrains Mono", monospace;
 
   font-size: 24px;
@@ -20,17 +26,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 body {
   font-family: var(--font-mono);
   color: var(--text-dark);
-  background-color: var(--base-light);
+  background: var(--background);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#slide {
+  width: 100%;
+  height: 100%;
 }
 
 section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,12 +68,12 @@ section > div {
 }
 
 section > .title {
-  background-color: var(--base-dark);
+  background: var(--base-dark);
   color: var(--base-light);
 }
 
 section > .content {
-  background-color: var(--base-light);
+  background: var(--base-light);
   color: var(--base-dark);
   box-shadow: inset 10px 0 10px -5px rgba(0, 0, 0, 0.3);
 }
@@ -80,13 +97,13 @@ li:not(:last-child) {
 }
 
 .slide-cover {
-  background-color: var(--base-dark);
+  background: var(--base-dark);
   color: var(--text-light);
   flex-direction: column;
 }
 
 .slide-cover > .content {
-  background-color: inherit;
+  background: inherit;
   color: inherit;
   box-shadow: none;
   display: grid;
@@ -103,7 +120,7 @@ li:not(:last-child) {
   font-weight: bold;
 }
 
-.slide-cover .language-js {
+.slide-cover .language {
   box-shadow: none;
 }
 
@@ -112,7 +129,7 @@ button {
 }
 
 #pagination {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   margin: 1rem;
@@ -121,17 +138,18 @@ button {
   justify-content: center;
   gap: 0.3rem;
   font-family: var(--font-mono);
-  color: var(--text-light);
   font-weight: bold;
 }
 
+#pagination * {
+  color: var(--text-light);
+}
+
 #pagination button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
   padding: 0.3rem;
+  border: none;
   background: none;
+  outline: none;
 }
 
 #pagination span {
@@ -140,36 +158,180 @@ button {
   cursor: pointer;
 }
 
-input,
-textarea,
-.output {
-  font-family: var(--font-mono);
-}
-
-.language-js {
+.language {
   border-radius: 0.5rem;
-  background-color: #191824;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-}
-
-#execute {
-  background-color: var(--base-dark);
-  color: var(--base-light);
-  padding: 0.3rem;
-  margin: 0;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-}
-
-#execute > img {
-  width: 30px;
-  height: 30px;
+  background: #191824;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 a {
   color: var(--text-dark);
+}
+
+#device {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+#device:not(:has(.fullscreen)) {
+  border-radius: calc(var(--device-radius) + (var(--device-border) / 2));
+  background: var(--mock);
+}
+
+#device:has(.desktop) {
+  aspect-ratio: 16/9;
+  width: auto;
+  height: 80%;
+  overflow: visible;
+}
+
+@keyframes desktop {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 50vh;
+  }
+}
+
+#device:has(.desktop)::before {
+  content: "";
+  background: var(--mock);
+  height: 0;
+  width: 15%;
+  position: absolute;
+  top: 50%;
+  left: 50;
+  animation: 0.1s desktop forwards;
+}
+
+#device:has(.tablet) {
+  aspect-ratio: 3/4;
+  width: auto;
+  height: 75%;
+}
+
+#device:has(.mobile) {
+  aspect-ratio: 10/21;
+  width: auto;
+  height: 70%;
+}
+
+#device:has(.mobile.landscape) {
+  rotate: 90deg;
+}
+
+#device:has(.mobile.landscape) > #screen {
+  rotate: -90deg;
+  aspect-ratio: 21/10;
+  width: auto;
+  height: calc((100% / 21 * 10) - var(--device-border));
+}
+
+#device:has(.watch) {
+  aspect-ratio: 1/1;
+  width: auto;
+  height: 30%;
+  --device-radius: 50%;
+  overflow: visible;
+}
+
+@keyframes watch {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 150%;
+  }
+}
+
+#device:has(.watch)::before {
+  content: "";
+  background: var(--mock);
+  height: 0;
+  width: 50%;
+  position: absolute;
+  top: 50;
+  left: 50;
+  border-radius: 0.25rem;
+  animation: 0.3s 0.2s watch forwards;
+}
+
+#device:has(.watch)::after {
+  content: "";
+  background: var(--mock);
+  height: 20px;
+  width: 10px;
+  position: absolute;
+  top: 50;
+  right: -5px;
+  border-radius: 0.5rem;
+}
+
+#device:has(#example) #pagination {
+  display: none;
+}
+
+body:has(#resize) {
+  gap: 5rem;
+}
+
+body:not(:has(.resize)) #resize {
+  display: none;
+}
+
+#resize {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 10%;
+}
+
+#resize button {
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid var(--mock);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--mock);
+  transition: 0.1s;
+}
+
+#resize button:hover {
+  color: var(--text-light);
+  background: var(--mock);
+}
+
+#screen {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  container-name: screen;
+  container-type: inline-size;
+}
+
+#device:not(:has(.fullscreen)) #screen {
+  width: calc(100% - var(--device-border));
+  height: calc(100% - var(--device-border));
+  border-radius: var(--device-radius);
+}
+
+@container screen (max-width: 1024px) {
+  section {
+    flex-direction: column;
+  }
+
+  section > .content {
+    box-shadow: inset 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  }
 }

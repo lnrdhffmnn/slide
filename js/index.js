@@ -1,4 +1,12 @@
 const Index = {
+  global: {
+    /** @type {number} */
+    page: 1,
+
+    /** @type {string} */
+    storageKey: "slide-page",
+  },
+
   elements: {
     /** @type {HTMLDivElement} */
     slide: document.querySelector("#slide"),
@@ -13,42 +21,36 @@ const Index = {
     page: document.querySelector("#page"),
   },
 
-  globals: {
-    /** @type {number} */
-    page: 1,
-
-    /** @type {string} */
-    storageKey: "slide-page",
-  },
-
   init() {
     Index.events();
     Index.loadInitialSlide();
   },
 
   events() {
-    window.addEventListener("keydown", Index.handleKeyboardEvents);
+    addEventListener("keydown", Index.handleKeyboardEvents);
     Index.elements.btnPrevious.addEventListener("click", Index.previousPage);
     Index.elements.btnNext.addEventListener("click", Index.nextPage);
     Index.elements.page.addEventListener("click", Index.slideModal);
   },
 
   loadInitialSlide() {
-    const slide = Number(sessionStorage.getItem(Index.globals.storageKey) ?? 1);
+    const slide = Number(sessionStorage.getItem(Index.global.storageKey) ?? 1);
     Index.goToSlide(isNaN(slide) || slide === 0 ? 1 : slide);
   },
 
   /** @param {KeyboardEvent} event */
   handleKeyboardEvents(event) {
     switch (event.key) {
-      case "ArrowLeft": {
+      case "ArrowLeft":
         Index.previousPage();
         break;
-      }
-      case "ArrowRight": {
+
+      case "ArrowRight":
         Index.nextPage();
         break;
-      }
+      case "Home":
+        Index.goToSlide(1);
+        break;
     }
   },
 
@@ -70,21 +72,30 @@ const Index = {
     if (!res.ok) return;
     const html = await res.text();
 
-    sessionStorage.setItem(Index.globals.storageKey, page.toString());
-    Index.globals.page = page;
+    sessionStorage.setItem(Index.global.storageKey, page.toString());
+    Index.global.page = page;
     Index.elements.page.innerHTML = page < 10 ? `0${page}` : page.toString();
 
     Index.elements.slide.innerHTML = html;
 
-    Slide.init();
+    hljs.highlightAll();
   },
 
   previousPage() {
-    Index.goToSlide(Index.globals.page - 1);
+    Index.goToSlide(Index.global.page - 1);
   },
 
   nextPage() {
-    Index.goToSlide(Index.globals.page + 1);
+    Index.goToSlide(Index.global.page + 1);
+  },
+
+  /**
+   * @param {"desktop" | "tablet" | "mobile" | "watch"} size
+   */
+  resize(size) {
+    /** @type {HTMLDivElement} */
+    const example = document.querySelector("#example");
+    example.className = `resize ${size}`;
   },
 };
 
