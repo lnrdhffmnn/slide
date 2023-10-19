@@ -14,6 +14,9 @@
   --mock: #242424;
   --background: #f6f5f4;
 
+  --device-radius: 1rem;
+  --device-border: 30px;
+
   --font-mono: "JetBrains Mono", monospace;
 
   font-size: 24px;
@@ -40,8 +43,6 @@ body {
 #slide {
   width: 100%;
   height: 100%;
-  container-name: slide;
-  container-type: inline-size;
 }
 
 section {
@@ -190,65 +191,72 @@ a {
   color: var(--text-dark);
 }
 
-#mock {
+#device {
   width: 100%;
   height: 100%;
-  position: relative;
-  border-radius: 1rem;
-}
-
-#mock:not(:has(.fullscreen)) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  box-shadow: 0 0 0 20px var(--mock);
 }
 
-#mock:not(:has(.fullscreen)) > div > section {
-  border-radius: 0.9rem;
+#device:not(:has(.fullscreen)) {
+  border-radius: calc(var(--device-radius) + (var(--device-border) / 2));
+  background: var(--mock);
 }
 
-#mock:has(.desktop, .tablet) {
-  overflow: visible;
-}
-
-#mock:has(.tablet, .mobile, .watch) > #pagination {
-  color: black;
-  /* Todo */
-}
-
-#mock:has(.desktop) {
+#device:has(.desktop) {
   aspect-ratio: 16/9;
   width: auto;
   height: 80%;
 }
 
-#mock:has(.tablet) {
+#device:has(.tablet) {
   aspect-ratio: 3/4;
   width: auto;
-  height: 79%;
+  height: 75%;
 }
 
-#mock:has(.mobile) {
+#device:has(.mobile) {
   aspect-ratio: 10/21;
   width: auto;
   height: 70%;
 }
 
-#mock:has(.mobile.landscape) {
+#device:has(.mobile.landscape) {
   rotate: 90deg;
 }
 
-#mock:has(.mobile.landscape) > * {
+#device:has(.mobile.landscape) > #screen {
   rotate: -90deg;
+  aspect-ratio: 21/10;
+  width: auto;
+  height: calc((100% / 21 * 10) - var(--device-border));
 }
 
-#mock:has(.watch) {
+#device:has(.watch) {
   aspect-ratio: 1/1;
   width: auto;
   height: 30%;
-  border-radius: 50%;
+  --device-radius: 50%;
 }
 
-@container slide (max-width: 1024px) {
+#screen {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  container-name: screen;
+  container-type: inline-size;
+}
+
+#device:not(:has(.fullscreen)) #screen {
+  width: calc(100% - var(--device-border));
+  height: calc(100% - var(--device-border));
+  border-radius: var(--device-radius);
+}
+
+@container screen (max-width: 1024px) {
   section {
     flex-direction: column;
   }
