@@ -1,9 +1,11 @@
 #example {
-  --example-background: #242424;
-  --example-background-light: #303030;
-  --example-background-dark: #1e1e1e;
-  --example-primary: #1c71d8;
-  --example-text: #fff;
+  --example-background: #fafafa;
+  --example-background-light: #fff;
+  --example-background-dark: #deddda;
+  --example-primary: #3584e4;
+  --example-primary-light: #99c1f1;
+  --example-primary-dark: #1c71d8;
+  --example-text: #242424
 
   font-family: sans-serif;
   background: var(--example-background);
@@ -16,7 +18,7 @@
 }
 
 .placeholder {
-  background: lightgray;
+  background: var(--example-primary-light);
   position: relative;
   opacity: 0.9;
   border-radius: 0.25rem;
@@ -42,7 +44,7 @@
 }
 
 .message:hover {
-  background: var(--example-background-light);
+  background: var(--example-background-dark);
 }
 
 .user-data {
@@ -106,7 +108,7 @@
 }
 
 .message-bubble {
-  background: var(--example-background-dark);
+  background: var(--example-background);
   border-radius: 0.5rem;
   padding: 0.5rem;
   width: 100%;
@@ -115,6 +117,7 @@
   flex-direction: column;
   gap: 0.5rem;
   border-top-left-radius: 0;
+  border: 2px solid var(--example-background-dark);
 }
 
 .message-bubble:nth-child(even) {
@@ -122,6 +125,7 @@
   border-radius: 0.5rem;
   border-top-right-radius: 0;
   align-self: flex-end;
+  border-color: var(--example-primary-dark);
 }
 
 .message-bubble .user-name {
@@ -144,7 +148,6 @@
 #send-message button {
   padding: 0.5rem;
   outline: none;
-  color: var(--example-text);
   border: 2px solid var(--example-background-dark);
 }
 
@@ -152,12 +155,16 @@
   border-radius: 0.5rem;
   width: 100%;
   background: var(--example-background-light);
+  color: var(--example-text);
 }
 
 #send-message button {
+  aspect-ratio: 1/1;
+  color: var(--example-background);
   background: var(--example-primary);
   font-weight: bold;
   border-radius: 50%;
+  border-color: var(--example-primary-dark);
 }
 
 @container example (min-width: 768px) {

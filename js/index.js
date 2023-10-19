@@ -41,14 +41,16 @@ const Index = {
   /** @param {KeyboardEvent} event */
   handleKeyboardEvents(event) {
     switch (event.key) {
-      case "ArrowLeft": {
+      case "ArrowLeft":
         Index.previousPage();
         break;
-      }
-      case "ArrowRight": {
+
+      case "ArrowRight":
         Index.nextPage();
         break;
-      }
+      case "Home":
+        Index.goToSlide(1);
+        break;
     }
   },
 

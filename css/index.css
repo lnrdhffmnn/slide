@@ -283,7 +283,7 @@ body:has(#resize) {
   gap: 5rem;
 }
 
-body:not(:has(#example)) #resize {
+body:not(:has(.resize)) #resize {
   display: none;
 }
 
