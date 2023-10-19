@@ -140,6 +140,7 @@ button {
   font-family: var(--font-mono);
   color: var(--text-light);
   font-weight: bold;
+  /* mix-blend-mode: difference; */
 }
 
 #pagination button {
@@ -198,6 +199,7 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 
 #device:not(:has(.fullscreen)) {
@@ -209,6 +211,28 @@ a {
   aspect-ratio: 16/9;
   width: auto;
   height: 80%;
+  overflow: visible;
+}
+
+@keyframes desktop {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 50vh;
+  }
+}
+
+#device:has(.desktop)::before {
+  content: "";
+  background: var(--mock);
+  height: 0;
+  width: 15%;
+  position: absolute;
+  top: 50%;
+  left: 50;
+  animation: 0.1s desktop forwards;
 }
 
 #device:has(.tablet) {
@@ -239,6 +263,40 @@ a {
   width: auto;
   height: 30%;
   --device-radius: 50%;
+  overflow: visible;
+}
+
+@keyframes watch {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 150%;
+  }
+}
+
+#device:has(.watch)::before {
+  content: "";
+  background: var(--mock);
+  height: 0;
+  width: 50%;
+  position: absolute;
+  top: 50;
+  left: 50;
+  border-radius: 0.25rem;
+  animation: 0.3s 0.2s watch forwards;
+}
+
+#device:has(.watch)::after {
+  content: "";
+  background: var(--mock);
+  height: 20px;
+  width: 10px;
+  position: absolute;
+  top: 50;
+  right: -5px;
+  border-radius: 0.5rem;
 }
 
 #screen {
