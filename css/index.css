@@ -202,6 +202,19 @@ a {
   box-shadow: 0 0 0 20px var(--mock);
 }
 
+#mock:not(:has(.fullscreen)) > div > section {
+  border-radius: 0.9rem;
+}
+
+#mock:has(.desktop, .tablet) {
+  overflow: visible;
+}
+
+#mock:has(.tablet, .mobile, .watch) > #pagination {
+  color: black;
+  /* Todo */
+}
+
 #mock:has(.desktop) {
   aspect-ratio: 16/9;
   width: auto;
@@ -211,13 +224,13 @@ a {
 #mock:has(.tablet) {
   aspect-ratio: 3/4;
   width: auto;
-  height: 80%;
+  height: 79%;
 }
 
 #mock:has(.mobile) {
-  aspect-ratio: 9/21;
+  aspect-ratio: 10/21;
   width: auto;
-  height: 80%;
+  height: 70%;
 }
 
 #mock:has(.mobile.landscape) {
