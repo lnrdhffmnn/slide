@@ -16,8 +16,15 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/example.css" />
 
     <!-- JS -->
     <script src="js/index.js" defer></script>
@@ -28,14 +35,32 @@
         <div id="slide"></div>
         <div id="pagination">
           <button id="btnPrevious">
-            <img src="img/chevron-left.svg" alt="Voltar" draggable="false" />
+            <i class="bi bi-chevron-left"></i>
           </button>
           <span id="page">01</span>
           <button id="btnNext">
-            <img src="img/chevron-right.svg" alt="Próximo" draggable="false" />
+            <i class="bi bi-chevron-right"></i>
           </button>
         </div>
       </div>
+    </div>
+    <div id="resize">
+      <button onclick="Index.resize('desktop')">
+        <i class="bi bi-display-fill"></i>
+        Desktop
+      </button>
+      <button onclick="Index.resize('tablet')">
+        <i class="bi bi-tablet-fill"></i>
+        Tablet
+      </button>
+      <button onclick="Index.resize('mobile')">
+        <i class="bi bi-phone-fill"></i>
+        Celular
+      </button>
+      <button onclick="Index.resize('watch')">
+        <i class="bi bi-watch"></i>
+        Relógio
+      </button>
     </div>
   </body>
 </html>

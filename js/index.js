@@ -86,6 +86,15 @@ const Index = {
   nextPage() {
     Index.goToSlide(Index.global.page + 1);
   },
+
+  /**
+   * @param {"desktop" | "tablet" | "mobile" | "watch"} size
+   */
+  resize(size) {
+    /** @type {HTMLDivElement} */
+    const example = document.querySelector("#example");
+    example.className = `resize ${size}`;
+  },
 };
 
 Index.init();

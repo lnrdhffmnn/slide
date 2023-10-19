@@ -138,18 +138,18 @@ button {
   justify-content: center;
   gap: 0.3rem;
   font-family: var(--font-mono);
-  color: var(--text-light);
   font-weight: bold;
-  /* mix-blend-mode: difference; */
+}
+
+#pagination * {
+  color: var(--text-light);
 }
 
 #pagination button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
   padding: 0.3rem;
+  border: none;
   background: none;
+  outline: none;
 }
 
 #pagination span {
@@ -158,34 +158,10 @@ button {
   cursor: pointer;
 }
 
-input,
-textarea,
-.output {
-  font-family: var(--font-mono);
-}
-
 .language {
   border-radius: 0.5rem;
   background: #191824;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
-}
-
-#execute {
-  background: var(--base-dark);
-  color: var(--base-light);
-  padding: 0.3rem;
-  margin: 0;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
-}
-
-#execute > img {
-  width: 30px;
-  height: 30px;
 }
 
 a {
@@ -297,6 +273,42 @@ a {
   top: 50;
   right: -5px;
   border-radius: 0.5rem;
+}
+
+#device:has(#example) #pagination {
+  display: none;
+}
+
+body:has(#resize) {
+  gap: 5rem;
+}
+
+body:not(:has(#example)) #resize {
+  display: none;
+}
+
+#resize {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 10%;
+}
+
+#resize button {
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid var(--mock);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--mock);
+  transition: 0.1s;
+}
+
+#resize button:hover {
+  color: var(--text-light);
+  background: var(--mock);
 }
 
 #screen {
