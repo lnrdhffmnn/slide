@@ -76,7 +76,7 @@ const Index = {
 
     Index.elements.slide.innerHTML = html;
 
-    Slide.init();
+    hljs.highlightAll();
   },
 
   previousPage() {
