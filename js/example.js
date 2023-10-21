@@ -1,4 +1,6 @@
 const Example = {
+  global: {},
+
   elements: {
     /** @type {HTMLDivElement} */
     screen: document.querySelector("#screen"),
@@ -6,6 +8,7 @@ const Example = {
 
   init() {
     Example.events();
+    Example.resize();
   },
 
   events() {
@@ -23,6 +26,17 @@ const Example = {
   },
 
   closeChat() {
+    if (Example.elements.screen.clientWidth > 768) return;
     document.querySelector("#chat").classList.remove("chat-open");
+  },
+
+  resize() {
+    const observer = new ResizeObserver((entries) => {
+      if (entries[0].contentRect.width > 768) {
+        document.querySelector("#chat").classList.remove("chat-open");
+      }
+    });
+
+    observer.observe(Example.elements.screen);
   },
 };
