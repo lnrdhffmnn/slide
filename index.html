@@ -46,19 +46,19 @@
       </div>
     </div>
     <div id="resize">
-      <button onclick="Index.resize('desktop')">
+      <button onclick="Index.resize(event, 'desktop')" class="active">
         <i class="bi bi-display-fill"></i>
         Desktop
       </button>
-      <button onclick="Index.resize('tablet')">
+      <button onclick="Index.resize(event, 'tablet')">
         <i class="bi bi-tablet-fill"></i>
         Tablet
       </button>
-      <button onclick="Index.resize('mobile')">
+      <button onclick="Index.resize(event, 'mobile')">
         <i class="bi bi-phone-fill"></i>
         Celular
       </button>
-      <button onclick="Index.resize('watch')">
+      <button onclick="Index.resize(event, 'watch')">
         <i class="bi bi-watch"></i>
         Relógio
       </button>

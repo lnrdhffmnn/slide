@@ -92,12 +92,21 @@ const Index = {
   },
 
   /**
+   * @param {PointerEvent} event
    * @param {"desktop" | "tablet" | "mobile" | "watch"} size
    */
-  resize(size) {
+  resize(event, size) {
     /** @type {HTMLDivElement} */
     const example = document.querySelector("#example");
     example.className = `resize ${size}`;
+
+    document.querySelectorAll("#resize button").forEach((button) => {
+      button.classList.remove("active");
+    });
+
+    /** @type {HTMLElement} */
+    const button = event.currentTarget;
+    button.classList.add("active");
   },
 };
 
