@@ -80,7 +80,7 @@ const Index = {
 
     hljs.highlightAll();
 
-    if (page === 10) Example.init();
+    if (page === 9) Example.init();
   },
 
   previousPage() {
