@@ -128,7 +128,7 @@
   border: 2px solid var(--example-background-dark);
 }
 
-.message-bubble:nth-child(even) {
+.message-bubble.from-user {
   background: var(--example-primary);
   border-radius: 0.5rem;
   border-top-right-radius: 0;
@@ -182,6 +182,21 @@
 
 #screen:has(.chat-open) #chat {
   width: 100%;
+}
+
+@keyframes new-message {
+  0% {
+    scale: 0;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+.new-message {
+  animation: 0.2s new-message forwards;
 }
 
 @container example (max-width: 1024px) {
