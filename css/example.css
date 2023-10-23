@@ -96,13 +96,14 @@
 }
 
 #chat-info .user-name {
-  width: 25%;
+  width: 15%;
 }
 
 #chat-info .bi {
   color: var(--example-primary-light);
   cursor: pointer;
   display: none;
+  margin-right: -0.5rem;
 }
 
 #messages {
@@ -118,9 +119,8 @@
 .message-bubble {
   background: var(--example-background);
   border-radius: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  max-width: 60%;
+  padding: 0.7rem;
+  width: 55%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -137,7 +137,7 @@
 }
 
 .message-bubble .user-name {
-  width: 30%;
+  width: 20%;
 }
 
 .message-bubble .message-content {
@@ -185,6 +185,18 @@
 }
 
 @container example (max-width: 1024px) {
+  #chat-info .user-name {
+    width: 25%;
+  }
+
+  .message-bubble {
+    width: 60%;
+    padding: 0.5rem;
+  }
+
+  .message-bubble .user-name {
+    width: 30%;
+  }
 }
 
 @container example (max-width: 768px) {
@@ -201,7 +213,43 @@
   #chat-info .bi {
     display: block;
   }
+
+  #chat-info .user-name {
+    width: 35%;
+  }
+
+  .message-bubble {
+    width: 75%;
+  }
+
+  .message-bubble .user-name {
+    width: 45%;
+  }
 }
 
 @container example (max-width: 360px) {
+  #chat-info .user-name {
+    width: 60%;
+  }
+
+  .message-bubble {
+    width: 90%;
+    padding: 0.3rem;
+  }
+
+  .message-bubble .user-name {
+    width: 50%;
+  }
+
+  #send-message {
+    padding-inline: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 0.2rem;
+  }
+
+  #chat-info {
+    padding-inline: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+  }
 }
