@@ -82,7 +82,7 @@ const Index = {
 
     hljs.highlightAll();
 
-    if (page === 9) {
+    if (page === 10) {
       Example.init();
       document.querySelectorAll("#resize button").forEach((button) => {
         button.classList.remove("active");

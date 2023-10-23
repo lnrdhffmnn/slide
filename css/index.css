@@ -351,21 +351,34 @@ body:not(:has(.resize)) #resize {
 
 @container screen (max-width: 360px) {
   section > div {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   #pagination {
-    bottom: -0.1rem;
+    bottom: -0.2rem;
     left: 50%;
     translate: -50%;
     margin: 0;
   }
 
+  .title {
+    height: 30%;
+  }
+
   .title h2 {
-    font-size: 1.7rem;
+    margin-top: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .content {
     font-size: 0.7rem;
+  }
+
+  .language {
+    margin-top: -2rem;
+  }
+
+  #pagination {
+    margin-bottom: 1rem;
   }
 }
