@@ -5,7 +5,7 @@
   --example-primary: #3584e4;
   --example-primary-light: #99c1f1;
   --example-primary-dark: #1c71d8;
-  --example-text: #242424
+  --example-text: #242424;
 
   font-family: sans-serif;
   background: var(--example-background);
@@ -26,11 +26,13 @@
 
 #sidebar {
   padding: 0.5rem;
-  width: 100%;
+  width: 25%;
+  min-width: 300px;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  border-right: 2px solid var(--example-background-dark);
 }
 
 .message {
@@ -74,9 +76,9 @@
 }
 
 #chat {
-  display: none;
   width: 100%;
   height: 100%;
+  display: flex;
   flex-direction: column;
 }
 
@@ -94,7 +96,14 @@
 }
 
 #chat-info .user-name {
-  width: 25%;
+  width: 15%;
+}
+
+#chat-info .bi {
+  color: var(--example-primary-light);
+  cursor: pointer;
+  display: none;
+  margin-right: -0.5rem;
 }
 
 #messages {
@@ -110,9 +119,8 @@
 .message-bubble {
   background: var(--example-background);
   border-radius: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  max-width: 60%;
+  padding: 0.7rem;
+  width: 55%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -129,7 +137,7 @@
 }
 
 .message-bubble .user-name {
-  width: 30%;
+  width: 20%;
 }
 
 .message-bubble .message-content {
@@ -167,16 +175,81 @@
   border-color: var(--example-primary-dark);
 }
 
-@container example (min-width: 768px) {
-  #chat {
-    display: flex;
+#screen:has(.chat-open) #sidebar {
+  width: 0;
+  padding-inline: 0;
+}
+
+#screen:has(.chat-open) #chat {
+  width: 100%;
+}
+
+@container example (max-width: 1024px) {
+  #chat-info .user-name {
+    width: 25%;
+  }
+
+  .message-bubble {
+    width: 60%;
+    padding: 0.5rem;
+  }
+
+  .message-bubble .user-name {
+    width: 30%;
   }
 }
 
-@container example (min-width: 768px) {
+@container example (max-width: 768px) {
   #sidebar {
-    width: 20%;
-    flex-shrink: 0;
-    border-right: 2px solid var(--example-background-dark);
+    width: 100%;
+    min-width: auto;
+    border-right: none;
+  }
+
+  #chat {
+    width: 0;
+  }
+
+  #chat-info .bi {
+    display: block;
+  }
+
+  #chat-info .user-name {
+    width: 35%;
+  }
+
+  .message-bubble {
+    width: 75%;
+  }
+
+  .message-bubble .user-name {
+    width: 45%;
+  }
+}
+
+@container example (max-width: 360px) {
+  #chat-info .user-name {
+    width: 60%;
+  }
+
+  .message-bubble {
+    width: 90%;
+    padding: 0.3rem;
+  }
+
+  .message-bubble .user-name {
+    width: 50%;
+  }
+
+  #send-message {
+    padding-inline: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 0.2rem;
+  }
+
+  #chat-info {
+    padding-inline: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
   }
 }
