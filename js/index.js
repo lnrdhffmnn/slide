@@ -40,15 +40,17 @@ const Index = {
 
   /** @param {KeyboardEvent} event */
   handleKeyboardEvents(event) {
-    switch (event.key) {
-      case "ArrowLeft":
+    switch (event.key.toLowerCase()) {
+      case "arrowleft":
+      case "a":
         Index.previousPage();
         break;
-
-      case "ArrowRight":
+      case "arrowright":
+      case "d":
         Index.nextPage();
         break;
-      case "Home":
+      case "home":
+      case "r":
         Index.goToSlide(1);
         break;
     }
@@ -80,7 +82,13 @@ const Index = {
 
     hljs.highlightAll();
 
-    if (page === 9) Example.init();
+    if (page === 9) {
+      Example.init();
+      document.querySelectorAll("#resize button").forEach((button) => {
+        button.classList.remove("active");
+      });
+      document.querySelector("#resize button").classList.add("active");
+    }
   },
 
   previousPage() {
