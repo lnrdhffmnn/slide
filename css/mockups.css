@@ -1,15 +1,34 @@
+:root {
+  --borders-color: #18181b;
+  --background-default: #000;
+
+  --monitor-suport-color: #000;
+
+  --nav-bar-color: #d4d4d4;
+  --nav-red-dot-color: red;
+  --nav-green-dot-color: green;
+  --nav-yellow-dot-color: yellow;
+
+  --tablet-button-color: #d4d4d4;
+  --tablet-button-border-color: white;
+
+  --smartwatch-button-color: gray;
+}
+
 /* monitor */
 .monitor-mockup {
-  border: 1rem solid #18181b;
-  border-bottom: 2rem solid #18181b;
+  border: 1rem solid var(--borders-color);
+  border-bottom: 2rem solid var(--borders-color);
   border-radius: 0.5rem;
+  display: flex;
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   background-color: black;
-  height: 540px;
-  width: 700px;
+  overflow-y: auto;
+  max-width: 70vw;
+  max-height: 80vh;
 }
 
 .monitor-mockup::before {
@@ -18,26 +37,26 @@
   position: absolute;
   transform: translate(-50%);
   height: 0;
-  width: 5rem;
+  width: 6rem;
   left: 50%;
   bottom: -6rem;
   border-left: 2rem solid transparent;
   border-right: 2rem solid transparent;
-  border-bottom: 5rem solid black;
-  z-index: -1;
+  border-bottom: 5rem solid var(--monitor-suport-color);
+  z-index: 1;
 }
 
 /* desktop */
 .desktop-mockup {
-  border-top: 3rem solid #d4d4d4;
+  border-top: 3rem solid var(--nav-bar-color);
   border-radius: 1rem;
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background-color: black;
-  height: 700px;
-  width: 1100px;
+  background-color: var(--background-default);
+  height: 100%;
+  width: 100%;
 }
 
 .desktop-mockup::before {
@@ -49,22 +68,24 @@
   height: 0.5rem;
   width: 0.5rem;
   border-radius: 50%;
-  background-color: red;
-  box-shadow: 0 0 0 0.2rem red, 2rem 0 0 0.2rem green, 4rem 0 0 0.2rem yellow;
+  background-color: var(--nav-red-dot-color);
+  box-shadow: 0 0 0 0.2rem var(--nav-red-dot-color),
+    2rem 0 0 0.2rem var(--nav-green-dot-color),
+    4rem 0 0 0.2rem var(--nav-yellow-dot-color);
 }
 
 /* tablet */
 .tablet-mockup {
-  border: 1rem solid #18181b;
-  border-right: 1.5rem solid #18181b;
+  border: 1rem solid var(--borders-color);
+  border-right: 1.5rem solid var(--borders-color);
   border-radius: 3rem;
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background-color: black;
-  height: 300px;
-  width: 1100px;
+  background-color: var(--background-default);
+  height: 50vh;
+  width: 70vw;
 }
 
 .tablet-mockup::before {
@@ -77,18 +98,19 @@
   height: 1.25rem;
   width: 1.25rem;
   border-radius: 50%;
-  background-color: #d4d4d4;
+  border: 0.1rem solid var(--tablet-button-border-color);
+  background-color: var(--tablet-button-color);
 }
 
 /* mobile */
 .mobile-mockup {
-  border: 0.75rem solid #18181b;
+  border: 0.75rem solid var(--borders-color);
   border-radius: 3rem;
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background-color: black;
+  background-color: var(--background-default);
   height: 500px;
   width: 300px;
 }
@@ -98,7 +120,7 @@
   display: block;
   position: absolute;
   transform: translate(-50%);
-  background-color: #18181b;
+  background-color: var(--borders-color);
   border-radius: 0.75rem;
   width: 5rem;
   height: 2.25rem;
@@ -107,23 +129,23 @@
 }
 
 /* smartwacth */
-.watch-mockup {
-  border: 1.5rem solid #18181b;
+.smartwatch-mockup {
+  border: 1.5rem solid var(--borders-color);
   border-radius: 50%;
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background-color: black;
-  height: 360px;
-  width: 360px;
+  background-color: var(--background-default);
+  height: 30vh;
+  width: 30vh;
 }
 
-.watch-mockup::before {
+.smartwatch-mockup::before {
   content: "";
   display: block;
   position: absolute;
-  background-color: #18181b;
+  background-color: var(--borders-color);
   transform: translate(-50%, -25%);
   border-radius: 1rem;
   left: 50%;
@@ -132,7 +154,7 @@
   z-index: -1;
 }
 
-.watch-mockup::after {
+.smartwatch-mockup::after {
   content: "";
   display: block;
   position: absolute;
@@ -141,7 +163,7 @@
   right: -3rem;
   width: 3rem;
   height: 3rem;
-  border-radius: 0.5rem;
-  background-color: gray;
+  border-radius: 1rem;
+  background-color: var(--smartwatch-button-color);
   z-index: -1;
 }
